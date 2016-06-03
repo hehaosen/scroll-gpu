@@ -17,8 +17,8 @@
 </style>
 <body>
 <div class="J_dddd">
-    <div class="box" style="background: red"></div>
-    <div class="box" style="background: green"></div>
+    <div id="clone_test" class="box" style="background: red"></div>
+    <div class="box" style="background: green"><span>sadsadsadsa</span></div>
     <div class="box" style="background: yellow"></div>
     <div class="box" style="background: pink"></div>
     <div class="box" style="background: black"></div>
@@ -32,6 +32,11 @@
 </body>
 <script src="scroll-gpu.js"></script>
 <script>
-    scrollGpu('.J_dddd');
+    scrollGpu('.J_dddd' , function () {
+        document.getElementById('clone_test').addEventListener('click', function(){
+            alert('我是绑定');
+        });
+    });
+
 </script>
 </html>
