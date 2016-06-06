@@ -39,6 +39,10 @@ var scrollGpu = function (element, callback) {
 
     _scrollElement.addEventListener('touchend',function ( e ) {
         _y = e.changedTouches[0].clientY - _my + _y;
+        if ( _y > 0) {
+            _y = 0;
+            _scrollElement.style.cssText = 'transform: translate3d(0, 0, 0)'
+        }
     });
 
     // 回调函数
