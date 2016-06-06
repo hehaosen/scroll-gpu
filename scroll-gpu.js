@@ -42,6 +42,9 @@ var scrollGpu = function (element, callback) {
         if ( _y > 0) {
             _y = 0;
             _scrollElement.style.cssText = 'transform: translate3d(0, 0, 0)'
+        } else if ( _y < _element.offsetHeight - _scrollElement.offsetHeight) {
+            _y = _element.offsetHeight - _scrollElement.offsetHeight;
+            _scrollElement.style.cssText = 'transform: translate3d(0, ' +  _y + 'px, 0)'
         }
     });
 
