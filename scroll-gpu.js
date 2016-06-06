@@ -48,7 +48,8 @@ var scrollGpu = function (element, callback) {
         }
     });
 
-    var _yAdd = 0, _speedTimer= '';
+    // 弹性滚动增加的距离
+    var _yAdd = 0;
 
     _scrollElement.addEventListener('touchend',function ( e ) {
         _y = e.changedTouches[0].clientY - _my + _y;
