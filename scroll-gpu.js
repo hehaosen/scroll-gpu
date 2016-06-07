@@ -36,15 +36,26 @@ var scrollGpu = function (element, callback) {
         e.preventDefault(); // 阻止触摸时浏览器的缩放、滚动条滚动等
         _my = e.touches[0].clientY;
         _timer = new Date().getTime();
-        //_scrollElement.style.cssText = 'transform: translate3d(0, ' +  + ', 0)'
+
     });
     _scrollElement.addEventListener('touchmove',function ( e ) {
 
-        if (e.touches[0].clientY - _my + _y > 0 || e.touches[0].clientY - _my + _y < _element.offsetHeight - _scrollElement.offsetHeight) {
+        if (e.touches[0].clientY - _my + _y > 0 ) {
             // 如果超出滚动范围，不进行动画
-            _scrollElement.style.cssText = 'transform: translate3d(0, ' + (e.touches[0].clientY - _my + _y) + 'px, 0);';
+            if (e.touches[0].clientY - _my + _y < 40) {
+
+                _scrollElement.style.cssText = 'transform: translate3d(0, ' + (e.touches[0].clientY - _my + _y) + 'px, 0);';
+            }
+
+        } else if (e.touches[0].clientY - _my + _y < _element.offsetHeight - _scrollElement.offsetHeight) {
+
+            if (e.touches[0].clientY - _my + _y + 40 > _element.offsetHeight - _scrollElement.offsetHeight) {
+
+                _scrollElement.style.cssText = 'transform: translate3d(0, ' + (e.touches[0].clientY - _my + _y) + 'px, 0);';
+            }
         } else {
             _scrollElement.style.cssText = 'transform: translate3d(0, ' + (e.touches[0].clientY - _my + _y) + 'px, 0);';
+
         }
     });
 
